@@ -4,68 +4,87 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dimond Shop</title>
-<meta name="description" content="Dimond Shop - Gold Diamond Staff" />
 <style>
 :root{
-  --bg:#0b0f14; --card:#111827; --muted:#94a3b8; --text:#e5e7eb;
-  --accent:#FFD700; --accent2:#ffb300; --ok:#10b981;
+  --bg:#0b0f14; --card:#111827; --muted:#94a3b8; --text:#fefce8;
+  --accent:#facc15; --accent2:#fbbf24; --ok:#10b981;
 }
 *{box-sizing:border-box}
 html,body{
   margin:0;
-  background:linear-gradient(135deg,#0b0f14 0%,#0f172a 60%,#0b0f14 100%);
+  background:linear-gradient(135deg,#0b0f14 0%,#1e1b4b 60%,#0b0f14 100%);
   color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
-a{color:inherit;text-decoration:none}
 .container{max-width:1080px;margin:0 auto;padding:24px}
 header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
-.logo{width:44px;height:44px;border-radius:12px;
-  background:radial-gradient(circle at 30% 30%,var(--accent),transparent 60%),radial-gradient(circle at 70% 70%,var(--accent2),transparent 60%);
-  box-shadow:0 8px 24px rgba(255,215,0,.35), inset 0 0 12px rgba(255,179,0,.5)
+.logo{
+  width:48px;height:48px;border-radius:12px;
+  background: radial-gradient(circle at 30% 30%,var(--accent),transparent 60%),
+              radial-gradient(circle at 70% 70%,var(--accent2),transparent 60%),
+              #f59e0b;
+  box-shadow:0 0 15px var(--accent), 0 0 35px var(--accent2), inset 0 0 12px rgba(250,191,36,.5);
 }
-.title{font-size:1.4rem;font-weight:700;letter-spacing:.5px}
-.lang-btn{
-  padding:8px 12px;border-radius:12px;border:none;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:#000;font-weight:700;cursor:pointer
-}
+.title{font-size:1.5rem;font-weight:700;letter-spacing:.5px}
 .search{flex:1;display:flex;gap:10px;align-items:center;max-width:520px;margin-left:24px}
-.search input{flex:1;padding:12px 14px;border-radius:14px;border:1px solid #243041;background:#0b1220;color:var(--text);outline:none}
-.search input::placeholder{color:#64748b}
-.pill{padding:8px 14px;border-radius:999px;background:#0b1220;border:1px solid #1f2a44;color:#cbd5e1}
+.search input{
+  flex:1;padding:12px 14px;border-radius:14px;border:1px solid #4b5563;
+  background:#0b1220;color:var(--text);outline:none
+}
+.search input::placeholder{color:#a1a1aa}
+.pill{
+  padding:8px 14px;border-radius:999px;background:#0b1220;
+  border:1px solid #4b5563;color:#fef9c3
+}
+.lang-btn{
+  padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,#facc15,#fbbf24);
+  color:#000;font-weight:700;cursor:pointer;border:none
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{
+  padding:8px 12px;border-radius:999px;border:1px solid rgba(148,163,184,.25);
+  background:#0b1220;color:#fefce8;cursor:pointer
+}
+.chip.active{
+  background:linear-gradient(90deg,rgba(250,204,21,.25),rgba(251,191,36,.25));
+  border-color:rgba(250,204,21,.5)
+}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:22px}
 .card{
-  
-  position:relative;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-  border:1px solid rgba(255,215,0,.4);backdrop-filter:blur(6px);padding:14px;border-radius:18px;
-  box-shadow:0 0 10px rgba(255,215,0,.5), 0 0 25px rgba(255,179,0,.3), inset 0 0 12px rgba(255,215,0,.2);
-  animation:ledGlow 3s infinite alternate;
+  position:relative;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  border:1px solid rgba(250,204,21,.4);
+  padding:14px;border-radius:18px;
+  box-shadow:0 0 15px rgba(250,204,21,.4), 0 0 30px rgba(251,191,36,.3);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-@keyframes ledGlow {
-  0% {box-shadow:0 0 8px rgba(255,215,0,.5),0 0 20px rgba(255,179,0,.3);}
-  100% {box-shadow:0 0 20px rgba(255,215,0,.8),0 0 40px rgba(255,179,0,.5);}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(250,204,21,.7), 0 0 45px rgba(251,191,36,.5);
 }
-.img{aspect-ratio:4/3;border-radius:14px;background:#0b1220 center/cover no-repeat;border:1px solid rgba(255,215,0,.3)}
+.img{
+  aspect-ratio:4/3;border-radius:14px;
+  background:#0b1220 center/cover no-repeat;
+  border:1px solid rgba(250,204,21,.3)
+}
 .name{margin:10px 0 4px;font-weight:700}
 .desc{margin:0;color:var(--muted);font-size:.95rem;min-height:38px}
 .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
-.price{font-weight:800;color:var(--accent)}
+.price{font-weight:800;color:#fde68a}
 .btn{
-  cursor:pointer;padding:10px 12px;border-radius:12px;border:none;
-  background:linear-gradient(180deg,var(--accent),var(--accent2));
-  color:black;font-weight:700
+  cursor:pointer;padding:10px 12px;border-radius:12px;
+  border:1px solid rgba(250,204,21,.4);
+  background:linear-gradient(180deg,#facc15,#fbbf24);
+  color:#000;font-weight:700
 }
 .btn:hover{filter:brightness(1.08)}
-footer{margin:36px 0 8px;text-align:center;color:#8aa0b8;font-size:.95rem}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.chip{
-  padding:8px 12px;border-radius:999px;border:1px solid rgba(255,215,0,.4);
-  background:#0b1220;color:#cbd5e1;cursor:pointer
+.notice{
+  margin-top:16px;border:1px dashed rgba(250,204,21,.5);
+  padding:12px 14px;border-radius:12px;color:#fef9c3;
+  background:rgba(10,15,25,.5)
 }
-.chip.active{background:linear-gradient(90deg,rgba(255,215,0,.25),rgba(255,179,0,.25))}
-.notice{margin-top:16px;border:1px dashed rgba(255,215,0,.35);padding:12px 14px;border-radius:12px;color:#cbd5e1;background:rgba(10,15,25,.5)}
+footer{margin:36px 0 8px;text-align:center;color:#fef9c3;font-size:.95rem}
 </style>
 </head>
 <body>
@@ -75,33 +94,36 @@ footer{margin:36px 0 8px;text-align:center;color:#8aa0b8;font-size:.95rem}
       <div class="logo"></div>
       <div>
         <div class="title" id="shopTitle">Dimond Shop</div>
-        <div style="color:#8aa0b8;font-size:.9rem" id="subtitle">All items in one place</div>
+        <div id="subtitle" style="color:#fef9c3;font-size:.9rem">All items in one place</div>
       </div>
     </div>
-    <button class="lang-btn" id="langToggle">كوردی</button>
     <div class="search">
       <input id="search" placeholder="Search items…" />
       <span class="pill" id="count">0 items</span>
     </div>
+    <button class="lang-btn" id="langToggle">كوردی</button>
   </header>
 
   <div class="filters" id="filters"></div>
   <section class="grid" id="grid"></section>
-
-  
- 
+  <div class="notice" id="notice">
+    ⚡ Tip: Host this file on GitHub Pages / Netlify / Cloudflare Pages, then make a QR code for it.
+  </div>
+  <footer>© <span id="yr"></span> Dimond — Built with ♥️</footer>
 </div>
 
 <script>
 const ITEMS = [
-  {id:1, name_en:"Business Card (Gold Diamond)", name_ku:"کارتەکانی کار (ئالماسی زێرین)", price:"10,000 IQD", img:"https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop", desc_en:"Premium gold diamond design.", desc_ku:"دیزاینی ئالماسی زێرین، کوالیتی بەرز.", category_en:"Print", category_ku:"چاپ"},
-  {id:2, name_en:"Payment Receipt", name_ku:"وەسڵی پارەدان", price:"5,000 IQD", img:"https://images.unsplash.com/photo-1529335764857-3f1164d1cb24?q=80&w=1200&auto=format&fit=crop", desc_en:"Custom gold diamond receipt.", desc_ku:"وەسڵی ئالماسی زێرین تایبەتی.", category_en:"Print", category_ku:"چاپ"},
-  {id:3, name_en:"Flex Banner (Gold Diamond)", name_ku:"فڵەکسی بانەر (ئالماسی زێرین)", price:"25,000 IQD", img:"https://images.unsplash.com/photo-1496080174650-637e3f22fa03?q=80&w=1200&auto=format&fit=crop", desc_en:"High-quality gold diamond banner.", desc_ku:"بانەری ئالماسی زێرین کوالیتی بەرز.", category_en:"Signage", category_ku:"بانەر"},
-  {id:4, name_en:"Pen with Diamond Sticker", name_ku:"قەڵەم بە ستیکەری ئەلمەاس", price:"3,000 IQD", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop", desc_en:"Luxury pen with gold diamond sticker.", desc_ku:"قەڵەمی لوکس بە ستیکەری ئالماسی زێرین.", category_en:"Accessories", category_ku:"زیندووە"},
-  {id:5, name_en:"T-shirt (Diamond Logo Back)", name_ku:"تی‌شێرت (لۆگۆی ئەلمەاس لە دواوە)", price:"15,000 IQD", img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop", desc_en:"T-shirt with gold diamond logo at back.", desc_ku:"تی‌شێرت بە لۆگۆی ئالماسی زێرین لە دواوە.", category_en:"Apparel", category_ku:"جل‌وپێڵاو"}
+  {id:1, name_en:"Business Card", name_ku:"کارتە بازرگانییەکان", price:"10,000 IQD", img:"https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop", desc_en:"Premium matte, double-sided.", desc_ku:"کوالێتی بەرز، دوو لا.", category_en:"Print", category_ku:"چاپ"},
+  {id:2, name_en:"Payment Receipt", name_ku:"وەسڵی پارەدان", price:"5,000 IQD", img:"https://images.unsplash.com/photo-1529335764857-3f1164d1cb24?q=80&w=1200&auto=format&fit=crop", desc_en:"Clean, professional design.", desc_ku:"دیزاینی پاک و پیشەیی.", category_en:"Print", category_ku:"چاپ"},
+  {id:3, name_en:"Flex Banner", name_ku:"بانەری فلێکس", price:"25,000 IQD", img:"https://images.unsplash.com/photo-1496080174650-637e3f22fa03?q=80&w=1200&auto=format&fit=crop", desc_en:"Strong & weatherproof.", desc_ku:"بەهێز و بەرگری لە هەوا.", category_en:"Signage", category_ku:"ئاگادارکردنەوە"},
+  {id:4, name_en:"Pen with Dimond Sticker", name_ku:"قەلەم بە ستیكەری دیەمۆند", price:"3,000 IQD", img:"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop", desc_en:"Smooth writing, gold diamond logo.", desc_ku:"نووسینی ئاسان، لوگۆی دیەمۆندی زێڕین.", category_en:"Branding", category_ku:"براند"},
+  {id:5, name_en:"T-Shirt Design (Diamond Logo Back)", name_ku:"تی‌شێرت بە لوگۆی دیەمۆند لە پشت", price:"15,000 IQD", img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop", desc_en:"Printed with gold diamond.", desc_ku:"چاپکراو بە دیەمۆندی زێڕین.", category_en:"Apparel", category_ku:"جل و برگە"},
 ];
 
-let lang = "en"; // default language
+let lang = "en";
+let activeCat = "All";
+
 const grid = document.getElementById('grid');
 const count = document.getElementById('count');
 const search = document.getElementById('search');
@@ -112,9 +134,10 @@ const subtitle = document.getElementById('subtitle');
 const notice = document.getElementById('notice');
 
 function getCategories(){
-  return ['All', ...Array.from(new Set(ITEMS.map(i=>lang==="en"?i.category_en:i.category_ku)))];
+  const key = lang==="en" ? "category_en" : "category_ku";
+  const cats = Array.from(new Set(ITEMS.map(i=>i[key])));
+  return lang==="en" ? ["All",...cats] : ["هەموو",...cats];
 }
-let activeCat = 'All';
 
 function renderFilters(){
   filters.innerHTML = '';
@@ -122,45 +145,51 @@ function renderFilters(){
     const b = document.createElement('button');
     b.textContent = cat;
     b.className = 'chip' + (cat===activeCat?' active':'');
-    b.onclick = ()=>{activeCat = cat; render(); renderFilters();};
+    b.onclick = ()=>{
+      activeCat = cat;
+      render();
+      renderFilters();
+    };
     filters.appendChild(b);
   });
 }
 
 function render(){
   const q = search.value.toLowerCase().trim();
-  const data = ITEMS.filter(i=>{
-    const name = lang==="en"?i.name_en:i.name_ku;
-    const cat = lang==="en"?i.category_en:i.category_ku;
-    return (activeCat==='All' || cat===activeCat) &&
-           (name.toLowerCase().includes(q) || cat.toLowerCase().includes(q));
-  });
-  count.textContent = data.length + (lang==="en"?(data.length===1?' item':' items'):(data.length===1?' کاڵا':' کاڵاکان'));
-  grid.innerHTML = data.map(i=> {
-    const name = lang==="en"?i.name_en:i.name_ku;
-    const desc = lang==="en"?i.desc_en:i.desc_ku;
-    return `
-      <article class="card" aria-label="${name}">
-        <div class="img" style="background-image:url('${i.img}')"></div>
-        <h3 class="name">${name}</h3>
-        <p class="desc">${desc}</p>
-        <div class="row">
-          <div class="price">${i.price}</div>
-          <a class="btn" href="https://wa.me/9647505890209?text=${encodeURIComponent((lang==="en"?"Hi, I want ":"سڵاو، دەمەوێ ") + name + " (" + i.price + ")")}" target="_blank" rel="noopener">${lang==="en"?"Buy":"کڕین"}</a>
-        </div>
-      </article>
-    `;
-  }).join('');
+  const nameKey = lang==="en" ? "name_en" : "name_ku";
+  const descKey = lang==="en" ? "desc_en" : "desc_ku";
+  const catKey = lang==="en" ? "category_en" : "category_ku";
+  const allLabel = lang==="en" ? "All" : "هەموو";
+  
+  const data = ITEMS.filter(i=>
+    (activeCat===allLabel || i[catKey]===activeCat) &&
+    (i[nameKey].toLowerCase().includes(q) || i[catKey].toLowerCase().includes(q))
+  );
+
+  count.textContent = data.length + (lang==="en" ? (data.length===1?' item':' items') : ' کاڵا');
+  grid.innerHTML = data.map(i=> `
+    <article class="card">
+      <div class="img" style="background-image:url('${i.img}')"></div>
+      <h3 class="name">${i[nameKey]}</h3>
+      <p class="desc">${i[descKey]}</p>
+      <div class="row">
+        <div class="price">${i.price}</div>
+        <a class="btn" href="https://wa.me/9647505890209?text=${encodeURIComponent((lang==="en"?"Hi, I want ":"سڵاو، دەمەوێ ") + i[nameKey] + ' (' + i.price + ')')}" target="_blank" rel="noopener">${lang==="en"?"Buy":"کڕین"}</a>
+      </div>
+    </article>
+  `).join('');
 }
 
 langToggle.addEventListener('click', ()=>{
   lang = (lang==="en"?"ku":"en");
-  langToggle.textContent = lang==="en"?"كوردی":"English";
-  shopTitle.textContent = lang==="en"?"Dimond Shop":"فرۆشگای دیەمۆند";
-  subtitle.textContent = lang==="en"?"All items in one place":"هەموو کاڵاکان لە یەک شوێند";
+  activeCat = lang==="en" ? "All" : "هەموو";
+  search.value = '';
+  langToggle.textContent = lang==="en" ? "كوردی" : "English";
+  shopTitle.textContent = lang==="en" ? "Dimond Shop" : "فرۆشگای دیەمۆند";
+  subtitle.textContent = lang==="en" ? "All items in one place" : "هەموو کاڵاکان لە یەک شوێند";
   notice.textContent = lang==="en"
-    ?"⚡ Tip: Host this on GitHub Pages / Netlify / Cloudflare Pages, then create a QR code for it."
-    :"⚡ پێشنیار: ئەم پەڕەیە بخەرە سەر GitHub Pages / Netlify / Cloudflare Pages و QR code بۆی دروست بکە.";
+    ? "⚡ Tip: Host this file on GitHub Pages / Netlify / Cloudflare Pages, then make a QR code for it."
+    : "⚡ پێشنیار: ئەم پەڕەیە بخەرە سەر GitHub Pages / Netlify / Cloudflare Pages و QR code بۆی دروست بکە.";
   renderFilters();
   render();
 });
